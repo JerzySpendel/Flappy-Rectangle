@@ -6,7 +6,7 @@ Player::Player(SDL_Renderer* ren){
 	_y = 0;
 	_start_y = 250.0;
 	_size = 20;
-	_speed = 300;
+	_speed = 250;
 	_time = 0.0;
 
 	m_renderer = ren;
@@ -61,10 +61,6 @@ void Player::set_size(int size){
 	_size = size;
 }
 
-bool Player::intersects(SDL_Rect* r){
-
-}
-
 void Player::jump(){
 	_time = 0.0;
 	_start_y = _y;
@@ -72,6 +68,10 @@ void Player::jump(){
 
 void Player::update(int dt){
 	_time += dt/(float)(1000);
-	_y = _start_y-_speed*_time + 300*_time*_time/2;
+	_y = _start_y-_speed*_time + 500*_time*_time/2;
 
+}
+
+SDL_Rect Player::get_rect() const{
+	return SDL_Rect{x(), y(), size(), size()};
 }

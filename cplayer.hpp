@@ -23,7 +23,7 @@ public:
 	void set_y(float);
 	void set_size(int);
 
-	bool intersects(SDL_Rect*);
+	SDL_Rect get_rect() const;
 
 	void update(int);
 	void render() const;
