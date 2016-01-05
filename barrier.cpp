@@ -83,22 +83,20 @@ void BarrierManager::generate(){
 
 void BarrierManager::update(int dt){
 	std::vector<Barrier> next;
-	std::vector<Barrier>::iterator i;
-	for(i=m_barriers.begin(); i != m_barriers.end(); i++){
-		if(i->x() + Barrier::WIDTH > 0){
-			next.push_back(*i);
+	for(Barrier b : m_barriers){
+		if(b.x() + Barrier::WIDTH > 0){
+			next.push_back(b);
 		}
 	}
 	m_barriers = next;
 	this->generate();
-	for(i=m_barriers.begin(); i != m_barriers.end(); i++){
-		i->update(dt);
+	for(Barrier b : m_barriers){
+		b.update(dt);
 	}
 }
 
 void BarrierManager::render() const{
-	for(int i=0;i < m_barriers.size();i++){
-		Barrier b = m_barriers.at(i);
+	for(Barrier b : m_barriers){
 		b.render();
 	}
 }
@@ -106,8 +104,8 @@ void BarrierManager::render() const{
 bool BarrierManager::collision(Player* p){
 	std::vector<Barrier>::iterator i;
 	SDL_Rect r = p->get_rect();
-	for(i=m_barriers.begin(); i!=m_barriers.end(); i++){
-		if(i->collides(&r)){
+	for(Barrier b : m_barriers){
+		if(b.collides(&r)){
 			std::cout << "KOLIZJA" << std::endl;
 		}
 	}
