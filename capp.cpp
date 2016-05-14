@@ -1,9 +1,8 @@
 #include "capp.hpp"
-#include <SDL2/SDL.h>
 #include <iostream>
-#include "cplayer.hpp"
 #include "barrier.hpp"
 #include "timer.hpp"
+#include "board.h"
 
 CApp::CApp(){
 	m_surface = NULL;
@@ -13,6 +12,7 @@ CApp::CApp(){
 	m_bmanager = nullptr;
 	m_player = nullptr;
 	running = true;
+	m_board = nullptr;
 	dt = SDL_GetTicks();
 }
 
@@ -60,6 +60,7 @@ bool CApp::OnInit(){
 	}
 	m_player = new Player(m_renderer);
 	m_bmanager = new BarrierManager(this);
+	m_board = new Board(this);
 	return true;
 }
 
@@ -67,6 +68,7 @@ void CApp::OnLoop(){
 	m_player->update(20);
 	m_bmanager->update(20);
 	m_bmanager->collision(m_player);
+    m_board->update(20);
 
 }
 
@@ -76,6 +78,7 @@ void CApp::OnRender(){
 	SDL_RenderClear(m_renderer);
 	m_player->render();
 	m_bmanager->render();
+    m_board->render();
 	SDL_RenderPresent(m_renderer);
 }
 

@@ -32,11 +32,11 @@ void Barrier::update(int dt){
 }
 
 int Barrier::x() const{
-	return (int)m_rect_up->x;
+	return (int) m_rect_up->x;
 }
 
 int Barrier::y() const{
-	return (int)m_rect_up->y;
+	return (int) m_rect_up->y;
 }
 
 void Barrier::set_x(float x){

@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "cplayer.hpp"
+class Board;
 
 class BarrierManager;
 
@@ -14,6 +15,7 @@ private:
 	SDL_Renderer* m_renderer;
 	SDL_Texture* m_texture;
 	BarrierManager* m_bmanager;
+	Board* m_board;
 	Player* m_player;
 	Uint32 dt;
 public:

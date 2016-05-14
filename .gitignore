@@ -1,3 +1,6 @@
 main
 *.o
 *.swp
+.idea/*
+Debug/*
+build/*
